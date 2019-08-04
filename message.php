@@ -1,6 +1,6 @@
 <?php
-$chat_id="787432066";
-$token="814045135:AAHt_-aM-HRLHu804I2XKrl4w6Kid4GDZuA";
+$chat_id="chat_id";
+$token="token_anda";
 
 $signature = $argv[1];
 $timestamp = $argv[2];
