@@ -8,6 +8,12 @@ git clone https://github.com/mysqludf/lib_mysqludf_sys
 - Setelah berhasil, Masuk ke folder lib_mysqludf_sys dengan perintah `cd lib_mysqludf_sys`
 - Lalu eksekusi perintah `./install.sh`
 
+## DISABLE APP ARMOR UNTUK MYSQL
+```
+sudo ln -s /etc/apparmor.d/usr.sbin.mysqld /etc/apparmor.d/disable/
+sudo apparmor_parser -R /etc/apparmor.d/usr.sbin.mysqld
+```
+
 ## MENGEDIT TRIGGER SCRIPT
 - Jika sudah berhasil ubah line ke 12 dari trigger.sql dengan path anda sekarang
 - Misal jika sekarang berada di path `/var/www/bot/` 
