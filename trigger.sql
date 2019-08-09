@@ -5,7 +5,7 @@ CREATE TABLE acid_event_telegram LIKE acid_event$$
 
 DROP PROCEDURE IF EXISTS push_message$$
 CREATE PROCEDURE push_message
-(signatures varchar,
+(signatures varchar(255),
  timestmp datetime,
  ip_src int,
  ip_dst int,
@@ -37,7 +37,7 @@ SELECT
   sig_name, sig_priority, sig_class_id
 FROM iphdr
 INNER JOIN signature ON (NEW.signature = signature.sig_id) 
-WHERE sid = NEW.sid AND cid = NEW.cid
+WHERE sid = NEW.sid AND cid = NEW.cid;
 END;
 $$
 
