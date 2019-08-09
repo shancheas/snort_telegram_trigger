@@ -32,12 +32,12 @@ acid_event_telegram
   sig_name, sig_priority, sig_class_id
 )
 SELECT 
-  sid , cid , signature as signatures, timestamp,
+  event.sid , event.cid , event.signature, event.timestamp,
   NEW.ip_src, NEW.ip_dst, NEW.ip_proto, 
   sig_name, sig_priority, sig_class_id
 FROM event
-INNER JOIN signature ON (signatures = signature.sig_id) 
-WHERE sid = NEW.sid AND cid = NEW.cid;
+INNER JOIN signature ON (event.signatures = signature.sig_id) 
+WHERE event.sid = NEW.sid AND event.cid = NEW.cid;
 END;
 $$
 
