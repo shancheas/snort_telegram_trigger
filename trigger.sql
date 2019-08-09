@@ -22,7 +22,7 @@ END;
 $$
 
 DROP TRIGGER IF EXISTS acid_event_trigger$$
-CREATE TRIGGER `acid_event_trigger` AFTER INSERT ON `event`
+CREATE TRIGGER `acid_event_trigger` AFTER INSERT ON `iphdr`
 FOR EACH ROW BEGIN
 INSERT INTO 
 acid_event_telegram 
@@ -32,10 +32,10 @@ acid_event_telegram
   sig_name, sig_priority, sig_class_id
 )
 SELECT 
-  NEW.sid as sid, NEW.cid as cid, NEW.signature, NEW.timestamp,
-  ip_src, ip_dst, ip_proto, 
+  sid , cid , signature, timestamp,
+  NEW.ip_src, NEW.ip_dst, NEW.ip_proto, 
   sig_name, sig_priority, sig_class_id
-FROM iphdr
+FROM event
 INNER JOIN signature ON (NEW.signature = signature.sig_id) 
 WHERE sid = NEW.sid AND cid = NEW.cid;
 END;
