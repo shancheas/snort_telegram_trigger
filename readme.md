@@ -6,6 +6,8 @@
 git clone https://github.com/mysqludf/lib_mysqludf_sys
 ```
 - Setelah berhasil, Masuk ke folder lib_mysqludf_sys dengan perintah `cd lib_mysqludf_sys`
+- Ubah file `Makefile` dengan menambahkan `-fPIC` di belakang nya
+- Juga ubah `$(LIBDIR)/lib_mysqludf_sys.so` menjadi `$(LIBDIR)/mysql/plugin/lib_mysqludf_sys.so`
 - Lalu eksekusi perintah `./install.sh`
 
 ## DISABLE APP ARMOR UNTUK MYSQL
